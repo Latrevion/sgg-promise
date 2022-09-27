@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promise-all</title>
+</head>
+<body>
+<script>
+  let p = new Promise((resolve, reject) =>
+  resolve('ok')
+  //   reject('error')
+  )
+  let p1 = Promise.resolve('1')
+  let p2 = Promise.resolve('2')
+
+  const result= Promise.all([p, p1 ,p2])
+  result.then(()=>{
+    console.log('is ok~')
+    return Promise.reject('is err')
+  })
+    .then((value)=>{
+      console.log(value)
+    },(reason)=>{
+      console.warn(reason)
+    })
+  console.log(result)
+</script>
+</body>
+</html>
